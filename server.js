@@ -11,7 +11,7 @@ motor.servoWrite(mid);
 
 // go to 100 degrees
 setTimeout(() => {
-  motor.servoWrite(min);
+  motor.servoWrite(max);
 }, 1000);
 
 // go to 100 degrees
@@ -19,12 +19,12 @@ setTimeout(() => {
   motor.servoWrite(mid);
 }, 2000);
 
-// go back to mid
-setTimeout(() => {
-  motor.servoWrite(max);
-}, 3000);
+// // go back to mid
+// setTimeout(() => {
+//   motor.servoWrite(max);
+// }, 3000);
 
-// go back to mid
-setTimeout(() => {
-  motor.servoWrite(mid);
-}, 4000);
+// // go back to mid
+// setTimeout(() => {
+//   motor.servoWrite(mid);
+// }, 4000);
