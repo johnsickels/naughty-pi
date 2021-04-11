@@ -7,17 +7,36 @@ const max = 2500;
 const min = 500;
 
 // start at zero
-motor.servoWrite(mid);
+// motor.servoWrite(mid);
+
+let pulseWidth = 1500;
+let increment = 100;
+let counter = 0;
+
+const naughtyInterval = setInterval(() => {
+  if (ctr > 40) {
+    clearInterval(naughtyInterval);
+  }
+  motor.servoWrite(pulseWidth);
+  ctr++;
+
+  pulseWidth += increment;
+  if (pulseWidth >= max) {
+    increment = -100;
+  } else if (pulseWidth <= min) {
+    increment = 100;
+  }
+}, 100);
 
 // go to 100 degrees
-setTimeout(() => {
-  motor.servoWrite(max);
-}, 1000);
+// setTimeout(() => {
+//   motor.servoWrite(min);
+// }, 1000);
 
-// go to 100 degrees
-setTimeout(() => {
-  motor.servoWrite(mid);
-}, 2000);
+// // go to 100 degrees
+// setTimeout(() => {
+//   motor.servoWrite(mid);
+// }, 2000);
 
 // // go back to mid
 // setTimeout(() => {
