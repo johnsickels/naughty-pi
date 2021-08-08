@@ -19,19 +19,19 @@ const main = async () => {
   // move to max
   for (let i = mid; i < max; i += 10) {
     motor.servoWrite(i);
-    await sleep(1);
+    await sleep(10);
   }
 
   // move to min
   for (let i = max; i > min; i -= 10) {
     motor.servoWrite(i);
-    await sleep(1);
+    await sleep(10);
   }
 
   // move back to mid
   for (let i = min; i < mid; i += 10) {
     motor.servoWrite(i);
-    await sleep(1);
+    await sleep(10);
   }
 };
 
