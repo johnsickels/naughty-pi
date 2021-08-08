@@ -17,19 +17,19 @@ const sleep = (t) => {
 const main = async () => {
   // start at mid
   // move to max
-  for (let i = mid; i < max; i++) {
+  for (let i = mid; i < max; i += 10) {
     motor.servoWrite(i);
     await sleep(1);
   }
 
   // move to min
-  for (let i = max; i > min; i--) {
+  for (let i = max; i > min; i -= 10) {
     motor.servoWrite(i);
     await sleep(1);
   }
 
   // move back to mid
-  for (let i = min; i < mid; i++) {
+  for (let i = min; i < mid; i += 10) {
     motor.servoWrite(i);
     await sleep(1);
   }
