@@ -4,7 +4,7 @@ const motor = new Gpio(13, { mode: Gpio.OUTPUT });
 
 const mid = 1500;
 const max = 2500;
-// const min = 500;
+const min = 500;
 
 const sleep = (t) => {
   return new Promise(function (resolve) {
@@ -22,8 +22,14 @@ const main = async () => {
     await sleep(1);
   }
 
+  // move to min
+  for (let i = max; i > min; i--) {
+    motor.servoWrite(i);
+    await sleep(1);
+  }
+
   // move back to mid
-  for (let i = max; i > mid; i--) {
+  for (let i = min; i < mid; i++) {
     motor.servoWrite(i);
     await sleep(1);
   }
