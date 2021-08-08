@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "connect": "ssh pi@raspberrypi.local",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "sudo node server.js"
   },

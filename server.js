@@ -1,32 +1,54 @@
 const Gpio = require("pigpio").Gpio;
 
-const motor = new Gpio(10, { mode: Gpio.OUTPUT });
+const motor = new Gpio(13, { mode: Gpio.OUTPUT });
 
 const mid = 1500;
 const max = 2500;
-const min = 500;
+// const min = 500;
 
-// start at zero
-// motor.servoWrite(mid);
+const sleep = (t) => {
+  return new Promise(function (resolve) {
+    setTimeout(function () {
+      resolve();
+    }, t);
+  });
+};
 
-let pulseWidth = 1500;
-let increment = 100;
-let counter = 0;
-
-const naughtyInterval = setInterval(() => {
-  if (ctr > 40) {
-    clearInterval(naughtyInterval);
+const main = async () => {
+  // start at mid
+  // move to max
+  for (let i = mid; i < max; i++) {
+    motor.servoWrite(i);
+    await sleep(1);
   }
-  motor.servoWrite(pulseWidth);
-  ctr++;
 
-  pulseWidth += increment;
-  if (pulseWidth >= max) {
-    increment = -100;
-  } else if (pulseWidth <= min) {
-    increment = 100;
+  // move back to mid
+  for (let i = max; i > mid; i--) {
+    motor.servoWrite(i);
+    await sleep(1);
   }
-}, 100);
+};
+
+main();
+
+// let pulseWidth = 1500;
+// let increment = 100;
+// let counter = 0;
+
+// const naughtyInterval = setInterval(() => {
+//   if (ctr > 40) {
+//     clearInterval(naughtyInterval);
+//   }
+//   motor.servoWrite(pulseWidth);
+//   ctr++;
+
+//   pulseWidth += increment;
+//   if (pulseWidth >= max) {
+//     increment = -100;
+//   } else if (pulseWidth <= min) {
+//     increment = 100;
+//   }
+// }, 100);
 
 // go to 100 degrees
 // setTimeout(() => {
