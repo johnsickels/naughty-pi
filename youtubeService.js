@@ -143,7 +143,13 @@ const checkTokens = async () => {
     }
 };
 
-// Check tokens as soon as server is started
-checkTokens();
+(async () => {
+
+    // Check tokens as soon as server is started
+    await checkTokens();
+    await youtubeService.findActiveChat();
+    youtubeService.startTrackingChat();
+
+})()
 
 module.exports = youtubeService;
