@@ -1,2 +1,4 @@
 node_modules/
 *.m4a
+.env
+tokens.json
