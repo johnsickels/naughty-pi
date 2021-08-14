@@ -3,6 +3,8 @@ const fs = require('fs');
 const { google } = require('googleapis');
 require('dotenv').config()
 
+const dispenseTreats = require('./treats/dispense');
+
 const writeFilePromise = util.promisify(fs.writeFile);
 const readFilePromise = util.promisify(fs.readFile);
 
@@ -34,7 +36,6 @@ let liveChatId; // Where we'll store the id of our liveChat
 let nextPage; // How we'll keep track of pagination for chat messages
 const intervalTime = 5000; // Miliseconds between requests to check chat messages
 let interval; // variable to store and control the interval that will check messages
-let chatMessages = []; // where we'll store all messages
 
 const youtubeService = {};
 
@@ -80,10 +81,18 @@ const getChatMessages = async () => {
         pageToken: nextPage
     });
     const { data } = response;
-    const newMessages = data.items;
-    chatMessages.push(...newMessages);
+    const keyword = '/treats';
     nextPage = data.nextPageToken;
-    console.log('Total Chat Messages:', chatMessages.length)
+
+    const newMessages = data.items.map(({ snippet }) => snippet.textMessageDetails.messageText)
+    console.log(newMessages);
+
+    const treatCommandFound = newMessages.some(message => message.includes(keyword))
+    console.log({ treatCommandFound });
+
+    if (treatCommandFound) {
+        dispenseTreats()
+    }
 };
 
 youtubeService.startTrackingChat = () => {
