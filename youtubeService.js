@@ -92,6 +92,7 @@ const getChatMessages = async () => {
 
     if (treatCommandFound) {
         dispenseTreats()
+        youtubeService.insertMessage("Treats activated.")
     }
 };
 
