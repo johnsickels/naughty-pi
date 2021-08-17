@@ -87,12 +87,17 @@ const getChatMessages = async () => {
     const newMessages = data.items.map(({ snippet }) => snippet.textMessageDetails.messageText)
     console.log(newMessages);
 
-    const treatCommandFound = newMessages.some(message => message.includes(keyword))
+    const treatCommandFound = newMessages.some(message => /\/treats/.test(message))
+    const cheerioCommandFound = newMessages.some(message => /\/cheerios/.test(message))
     console.log({ treatCommandFound });
 
     if (treatCommandFound) {
         dispenseTreats()
         youtubeService.insertMessage("Treats activated.")
+    }
+    if ( cheerioCommandFound) {
+        dispenseTreats()
+        youtubeService.insertMessage("Cheerios actived.")
     }
 };
 
