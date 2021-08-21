@@ -5,5 +5,6 @@ Donation driven cat treat dispenser for the Naughty Cat Cafe, powered by Raspber
 ## Technology
 - Raspberry Pi 4
 - Docker
+- FFMPEG
 
 Meow
