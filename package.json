@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "connect": "ssh pi@raspberrypi.local",
-    "docker:build": "docker build -t alexellis2/streaming .",
-    "docker:run": "docker run --rm --privileged --name cam -ti alexellis2/streaming:latest",
+    "docker:build": "docker build -t streaming .",
+    "docker:run": "docker run --privileged --name meow -ti --rm streaming:latest",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "sudo node server.js"
   },
