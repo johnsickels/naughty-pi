@@ -6,7 +6,7 @@
   "scripts": {
     "connect": "ssh pi@raspberrypi.local",
     "docker:build": "docker build -t streaming .",
-    "docker:run": "docker run --privileged --name meow -ti --rm streaming:latest",
+    "docker:run": "docker run --privileged --name meow -d --restart=always -e STREAM_KEY=$STREAM_KEY streaming:latest",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "sudo node server.js"
   },
