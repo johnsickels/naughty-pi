@@ -6,6 +6,7 @@
   "scripts": {
     "docker:build": "docker build -t streaming .",
     "docker:run": "docker run --privileged -d --rm -e STREAM_KEY=$STREAM_KEY streaming:latest",
+    "shuffle": "shuf playlist.txt --output=playlist.txt",
     "start": "sudo node server.js"
   },
   "keywords": [],

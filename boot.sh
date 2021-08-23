@@ -17,7 +17,7 @@ npm i
 
 echo "${LIGHT_PURPLE}$(date)${NC}"
 echo "Shuffling playlist..."
-shuf playlist.txt --output=playlist.txt
+npm run shuffle
 
 echo "${LIGHT_PURPLE}$(date)${NC}"
 echo "Cleaning up docker..."
