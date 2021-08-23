@@ -81,23 +81,17 @@ const getChatMessages = async () => {
         pageToken: nextPage
     });
     const { data } = response;
-    const keyword = '/treats';
     nextPage = data.nextPageToken;
 
     const newMessages = data.items.map(({ snippet }) => snippet.textMessageDetails.messageText)
     console.log(newMessages);
 
     const treatCommandFound = newMessages.some(message => /\/treats/.test(message))
-    const cheerioCommandFound = newMessages.some(message => /\/cheerios/.test(message))
     console.log({ treatCommandFound });
 
     if (treatCommandFound) {
         dispenseTreats()
-        youtubeService.insertMessage("Treats activated.")
-    }
-    if ( cheerioCommandFound) {
-        dispenseTreats()
-        youtubeService.insertMessage("Cheerios actived.")
+        youtubeService.insertMessage("Treats coming soon!")
     }
 };
 
