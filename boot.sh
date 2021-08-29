@@ -31,13 +31,13 @@ echo "${LIGHT_PURPLE}$(date)${NC}"
 echo "Starting docker container..."
 npm run docker:run
 
-echo "${LIGHT_PURPLE}$(date)${NC}"
-echo "Waiting for stream..."
-sleep 60
+# echo "${LIGHT_PURPLE}$(date)${NC}"
+# echo "Waiting for stream..."
+# sleep 60
 
-echo "${LIGHT_PURPLE}$(date)${NC}"
-echo "Starting server..."
-npm start
+# echo "${LIGHT_PURPLE}$(date)${NC}"
+# echo "Starting server..."
+# npm start
 
 echo "${LIGHT_PURPLE}$(date)${NC}"
 echo 'Done!'
